@@ -5,63 +5,66 @@ import { NavLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { Box } from "@material-ui/core/";
 
-export default function Navigation(props) {
+export default function Navigation() {
   const style = makeStyles({
+    navLinks: {
+      display: "flex",
+      flexDirection: "column",
+    },
     link: {
-        textDecoration: "none",
-        color: "black"
-    }
+      textDecoration: "none",
+      color: "black",
+      marginLeft: "40px",
+      marginTop: "24px",
+    },
+    accounts: {
+      marginLeft: "40px",
+      marginTop: "40px",
+      fontSize: "0.8em",
+      color: "#767676",
+    },
   })();
 
   return (
-    <div className="header-menu">
+    <div className="navbar">
       {/* Logo */}
-      <Box>
-        <NavLink exact to="/" className={style.link}>
-          MONEYE
-        </NavLink>
-      </Box>
+
+      <NavLink exact to="/" className={style.link}>
+        MONEYE
+      </NavLink>
 
       {/* Categories */}
       <Box className={style.navLinks}>
-        <Box>
-          <NavLink exact to="/" className={style.link} activeClassName={style.activeLink}>
-            Overview
-          </NavLink>
-        </Box>
-        <Box>
-          <NavLink exact to="/" className={style.link} activeClassName={style.activeLink}>
-            Expenses
-          </NavLink>
-        </Box>
-        <Box>
-          <NavLink exact to="/" className={style.link} activeClassName={style.activeLink}>
-            Income
-          </NavLink>
-        </Box>
+        <NavLink exact to="/" className={style.link} activeClassName={style.activeLink}>
+          Overview
+        </NavLink>
 
-        <Box>
-          <NavLink exact to="/" className={style.link} activeClassName={style.activeLink}>
-            Statistics
-          </NavLink>
-        </Box>
+        <NavLink exact to="/" className={style.link} activeClassName={style.activeLink}>
+          Expenses
+        </NavLink>
+
+        <NavLink exact to="/" className={style.link} activeClassName={style.activeLink}>
+          Income
+        </NavLink>
+
+        <NavLink exact to="/" className={style.link} activeClassName={style.activeLink}>
+          Statistics
+        </NavLink>
 
         {/* Accounts */}
-        <Box>
-          <NavLink exact to="/" className={style.link} activeClassName={style.activeLink}>
-            Card
-          </NavLink>
-        </Box>
-        <Box>
-          <NavLink exact to="/" className={style.link} activeClassName={style.activeLink}>
-            Cash
-          </NavLink>
-        </Box>
-        <Box>
-          <NavLink exact to="/" className={style.link} activeClassName={style.activeLink}>
-            Savings
-          </NavLink>
-        </Box>
+        <span className={style.accounts}>Accounts</span>
+
+        <NavLink exact to="/" className={style.link} activeClassName={style.activeLink}>
+          Card
+        </NavLink>
+
+        <NavLink exact to="/" className={style.link} activeClassName={style.activeLink}>
+          Cash
+        </NavLink>
+
+        <NavLink exact to="/" className={style.link} activeClassName={style.activeLink}>
+          Savings
+        </NavLink>
       </Box>
     </div>
   );
