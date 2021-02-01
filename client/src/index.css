@@ -1,3 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-transform: none;
+}
+#root {
+  display: flex;
+}
+
 body {
   margin: 0;
   font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
@@ -11,4 +20,9 @@ body {
   height: 100vh;
   width: 12em;
   box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14);
+}
+
+h1 {
+  margin-left: 40px;
+  margin-top: 64px;
 }
