@@ -16,6 +16,7 @@ export default function Navigation() {
       color: "black",
       marginLeft: "40px",
       marginTop: "24px",
+      cursor: "pointer",
     },
     accounts: {
       marginLeft: "40px",
@@ -39,30 +40,60 @@ export default function Navigation() {
           Overview
         </NavLink>
 
-        <NavLink exact to="/" className={style.link} activeClassName={style.activeLink}>
+        <NavLink
+          exact
+          to="/expenses"
+          className={style.link}
+          activeClassName={style.activeLink}
+        >
           Expenses
         </NavLink>
 
-        <NavLink exact to="/" className={style.link} activeClassName={style.activeLink}>
+        <NavLink
+          exact
+          to="/income"
+          className={style.link}
+          activeClassName={style.activeLink}
+        >
           Income
         </NavLink>
 
-        <NavLink exact to="/" className={style.link} activeClassName={style.activeLink}>
+        <NavLink
+          exact
+          to="/statistics"
+          className={style.link}
+          activeClassName={style.activeLink}
+        >
           Statistics
         </NavLink>
 
         {/* Accounts */}
         <span className={style.accounts}>Accounts</span>
 
-        <NavLink exact to="/" className={style.link} activeClassName={style.activeLink}>
+        <NavLink
+          exact
+          to="/card"
+          className={style.link}
+          activeClassName={style.activeLink}
+        >
           Card
         </NavLink>
 
-        <NavLink exact to="/" className={style.link} activeClassName={style.activeLink}>
+        <NavLink
+          exact
+          to="/cash"
+          className={style.link}
+          activeClassName={style.activeLink}
+        >
           Cash
         </NavLink>
 
-        <NavLink exact to="/" className={style.link} activeClassName={style.activeLink}>
+        <NavLink
+          exact
+          to="/savings"
+          className={style.link}
+          activeClassName={style.activeLink}
+        >
           Savings
         </NavLink>
       </Box>
