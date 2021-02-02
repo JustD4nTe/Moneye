@@ -6,15 +6,19 @@ module.exports = (sequelize) => {
     {
       name: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
       date: {
         type: DataTypes.DATEONLY,
+        defaultValue: DataTypes.NOW,
       },
       value: {
         type: DataTypes.DECIMAL(12, 2),
+        allowNull: false,
       },
       category: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
     },
     {

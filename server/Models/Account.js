@@ -6,9 +6,11 @@ module.exports = (sequelize) => {
     {
       name: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
       balance: {
         type: DataTypes.DECIMAL(12, 2),
+        defaultValue: 0,
       },
     },
     {
