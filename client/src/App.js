@@ -9,6 +9,7 @@ import Card from "./pages/card";
 import Cash from "./pages/cash";
 import Savings from "./pages/savings";
 import Spendings from "./pages/spendings";
+import { LINKS } from "./Constants";
 
 export default function App() {
   return (
@@ -16,13 +17,13 @@ export default function App() {
       <Navbar />
       <div className="App">
         <Switch>
-          <Route path="/" exact component={Overview} />
-          <Route path="/spendings" exact component={Spendings} />
-          <Route path="/income" exact component={Income} />
-          <Route path="/statistics" exact component={Statistics} />
-          <Route path="/card" exact component={Card} />
-          <Route path="/cash" exact component={Cash} />
-          <Route path="/savings" exact component={Savings} />
+          <Route path={LINKS.OVERVIEW} exact component={Overview} />
+          <Route path={LINKS.SPENDINGS} exact component={Spendings} />
+          <Route path={LINKS.INCOME} exact component={Income} />
+          <Route path={LINKS.STATISTICS} exact component={Statistics} />
+          <Route path={LINKS.CARD} exact component={Card} />
+          <Route path={LINKS.CASH} exact component={Cash} />
+          <Route path={LINKS.SAVINGS} exact component={Savings} />
         </Switch>
       </div>
     </Router>

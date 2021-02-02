@@ -4,6 +4,7 @@ import "../index.css";
 import { NavLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { Box } from "@material-ui/core/";
+import { LINKS } from "../Constants";
 
 export default function Navigation() {
   const style = makeStyles({
@@ -30,19 +31,24 @@ export default function Navigation() {
     <div className="navbar">
       {/* Logo */}
 
-      <NavLink exact to="/" className={style.link}>
+      <NavLink exact to={LINKS.OVERVIEW} className={style.link}>
         MONEYE
       </NavLink>
 
       {/* Categories */}
       <Box className={style.navLinks}>
-        <NavLink exact to="/" className={style.link} activeClassName={style.activeLink}>
+        <NavLink
+          exact
+          to={LINKS.OVERVIEW}
+          className={style.link}
+          activeClassName={style.activeLink}
+        >
           Overview
         </NavLink>
 
         <NavLink
           exact
-          to="/spendings"
+          to={LINKS.SPENDINGS}
           className={style.link}
           activeClassName={style.activeLink}
         >
@@ -51,7 +57,7 @@ export default function Navigation() {
 
         <NavLink
           exact
-          to="/income"
+          to={LINKS.INCOME}
           className={style.link}
           activeClassName={style.activeLink}
         >
@@ -60,7 +66,7 @@ export default function Navigation() {
 
         <NavLink
           exact
-          to="/statistics"
+          to={LINKS.STATISTICS}
           className={style.link}
           activeClassName={style.activeLink}
         >
@@ -72,7 +78,7 @@ export default function Navigation() {
 
         <NavLink
           exact
-          to="/card"
+          to={LINKS.CARD}
           className={style.link}
           activeClassName={style.activeLink}
         >
@@ -81,7 +87,7 @@ export default function Navigation() {
 
         <NavLink
           exact
-          to="/cash"
+          to={LINKS.CASH}
           className={style.link}
           activeClassName={style.activeLink}
         >
@@ -90,7 +96,7 @@ export default function Navigation() {
 
         <NavLink
           exact
-          to="/savings"
+          to={LINKS.SAVINGS}
           className={style.link}
           activeClassName={style.activeLink}
         >
