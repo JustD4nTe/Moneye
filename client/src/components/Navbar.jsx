@@ -5,9 +5,15 @@ import { NavLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { Box } from "@material-ui/core/";
 import { LINKS } from "../Constants";
+import Logo from "../images/logo_moneye_title.png";
 
 export default function Navigation() {
   const style = makeStyles({
+    logo: {
+      maxWidth: "100%",
+      padding: "24px",
+      boxSizing: "border-box",
+    },
     navLinks: {
       display: "flex",
       flexDirection: "column",
@@ -16,14 +22,16 @@ export default function Navigation() {
       textDecoration: "none",
       color: "black",
       marginLeft: "40px",
-      marginTop: "24px",
+      marginBottom: "24px",
       cursor: "pointer",
+    },
+    activeLink: {
+      color: "blue",
     },
     accounts: {
       marginLeft: "40px",
       marginTop: "40px",
-      fontSize: "0.8em",
-      color: "#767676",
+      fontSize: "0.7em",
     },
   })();
 
@@ -31,8 +39,8 @@ export default function Navigation() {
     <div className="navbar">
       {/* Logo */}
 
-      <NavLink exact to={LINKS.OVERVIEW} className={style.link}>
-        MONEYE
+      <NavLink exact to={LINKS.OVERVIEW}>
+        <img className={style.logo} src={Logo} alt="Moneye app logo" />
       </NavLink>
 
       {/* Categories */}
