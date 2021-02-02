@@ -24,9 +24,10 @@ export default function Navigation() {
       marginLeft: "40px",
       marginBottom: "24px",
       cursor: "pointer",
+      fontSize: "20px",
     },
     activeLink: {
-      color: "blue",
+      color: "var(--main-color)",
     },
     accounts: {
       marginLeft: "40px",

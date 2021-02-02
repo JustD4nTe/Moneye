@@ -4,13 +4,19 @@
   text-transform: none;
   cursor: default;
 }
+
+:root {
+  --main-color: #68acf1;
+  --main-grey: #767676;
+}
+
 #root {
   display: flex;
 }
 
 body {
   margin: 0;
-  font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
+  font-family: "Segoe UI", "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
