@@ -42,11 +42,11 @@ export default function Navigation() {
 
         <NavLink
           exact
-          to="/expenses"
+          to="/spendings"
           className={style.link}
           activeClassName={style.activeLink}
         >
-          Expenses
+          Spendings
         </NavLink>
 
         <NavLink
