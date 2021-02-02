@@ -4,6 +4,7 @@ const helmet = require("helmet");
 
 const incomeRouter = require("./Routes/IncomeRouter");
 const spendingRouter = require("./Routes/SpendingRouter");
+const overviewRouter = require("./Routes/OverviewRouter");
 
 const PORT = 5000;
 
@@ -22,6 +23,7 @@ app.get("/api/health", (req, res) => {
 
 app.use("/api/income", incomeRouter);
 app.use("/api/spending", spendingRouter);
+app.use("/api/overview", overviewRouter);
 
 app.listen(PORT, () => {
     console.log(`API is running on port: ${PORT}`);
