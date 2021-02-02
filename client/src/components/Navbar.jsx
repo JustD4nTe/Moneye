@@ -6,6 +6,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Box } from "@material-ui/core/";
 import { LINKS } from "../Constants";
 import Logo from "../images/logo_moneye_title.png";
+import CardIcon from "../images/icons/card.png";
+import CashIcon from "../images/icons/cash.png";
+import SavingsIcon from "../images/icons/savings.png";
 
 export default function Navigation() {
   const style = makeStyles({
@@ -17,14 +20,15 @@ export default function Navigation() {
     navLinks: {
       display: "flex",
       flexDirection: "column",
+      cursor: "pointer",
     },
     link: {
       textDecoration: "none",
       color: "black",
       marginLeft: "40px",
       marginBottom: "24px",
-      cursor: "pointer",
-      fontSize: "20px",
+      display: "flex",
+      alignItems: "center",
     },
     activeLink: {
       color: "var(--main-color)",
@@ -32,7 +36,12 @@ export default function Navigation() {
     accounts: {
       marginLeft: "40px",
       marginTop: "40px",
+      marginBottom: "8px",
       fontSize: "0.7em",
+    },
+    icon: {
+      paddingRight: "8px",
+      cursor: "pointer",
     },
   })();
 
@@ -91,6 +100,7 @@ export default function Navigation() {
           className={style.link}
           activeClassName={style.activeLink}
         >
+          <img className={style.icon} src={CardIcon} alt="" />
           Card
         </NavLink>
 
@@ -100,6 +110,7 @@ export default function Navigation() {
           className={style.link}
           activeClassName={style.activeLink}
         >
+          <img className={style.icon} src={CashIcon} alt="" />
           Cash
         </NavLink>
 
@@ -109,6 +120,7 @@ export default function Navigation() {
           className={style.link}
           activeClassName={style.activeLink}
         >
+          <img className={style.icon} src={SavingsIcon} alt="" />
           Savings
         </NavLink>
       </Box>
