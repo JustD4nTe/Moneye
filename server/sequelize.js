@@ -26,7 +26,9 @@ Income.belongsTo(Account);
 Account.hasMany(Expense);
 Expense.belongsTo(Account);
 
-sequelize.sync({ alter: false }).then(() => console.log("Database is ready to use!"));
+sequelize
+  .sync({ alter: false })
+  .then(() => console.log("Database is ready to use!"));
 
 module.exports = {
   Account,
