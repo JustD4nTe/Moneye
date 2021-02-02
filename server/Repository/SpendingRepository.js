@@ -1,5 +1,5 @@
 const { Sequelize, Op } = require("sequelize");
-const { Spending } = require("../sequelize");
+const { Spending, Account } = require("../sequelize");
 
 class SpendingRepository {
   async GetLastSumOfSpending(date) {
@@ -17,6 +17,25 @@ class SpendingRepository {
         "category",
       ],
       group: "category",
+    });
+  }
+
+  async GetHistory() {
+    return await Spending.findAll({
+      attributes: [
+        "name",
+        "date",
+        "value",
+        "category",
+        [Sequelize.col("Account.name"), "accountName"],
+      ],
+      include: [
+        {
+          model: Account,
+          attributes: [],
+        },
+      ],
+      order: [["date", "DESC"]],
     });
   }
 }
