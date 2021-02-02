@@ -1,10 +1,10 @@
 const express = require("express");
-const { Expense } = require("../sequelize");
+const { Spending } = require("../sequelize");
 
 const router = express.Router();
 
 router.post("/", async (req, res) => {
-  Expense.create({
+  Spending.create({
     name: req.body.name,
     date: req.body.date,
     value: req.body.value,

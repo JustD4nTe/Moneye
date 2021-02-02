@@ -2,7 +2,7 @@ const Sequelize = require("sequelize");
 
 const AccountModel = require("./Models/Account");
 const IncomeModel = require("./Models/Income");
-const ExpenseModel = require("./Models/Expense");
+const SpendingModel = require("./Models/Spending");
 
 const sequelize = new Sequelize("Moneye", "user", "pass", {
   host: "localhost",
@@ -18,13 +18,13 @@ try {
 
 const Account = AccountModel(sequelize);
 const Income = IncomeModel(sequelize);
-const Expense = ExpenseModel(sequelize);
+const Spending = SpendingModel(sequelize);
 
 Account.hasMany(Income);
 Income.belongsTo(Account);
 
-Account.hasMany(Expense);
-Expense.belongsTo(Account);
+Account.hasMany(Spending);
+Spending.belongsTo(Account);
 
 sequelize
   .sync({ alter: false })
@@ -33,5 +33,5 @@ sequelize
 module.exports = {
   Account,
   Income,
-  Expense,
+  Spending,
 };
