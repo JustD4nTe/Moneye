@@ -2,9 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 
-require("./sequelize");
-
 const incomeRouter = require("./Routes/IncomeRouter");
+const expenseRouter = require("./Routes/ExpenseRouter");
 
 const PORT = 5000;
 
@@ -22,6 +21,7 @@ app.get("/api/health", (req, res) => {
 });
 
 app.use("/api/income", incomeRouter);
+app.use("/api/expense", expenseRouter);
 
 app.listen(PORT, () => {
     console.log(`API is running on port: ${PORT}`);
