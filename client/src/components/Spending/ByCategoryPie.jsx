@@ -8,7 +8,6 @@ export default function ByCategoryPie(props) {
 
   useEffect(() => {
     setData(props.spendingByCategory);
-    console.log(props.spendingByCategory);
   }, [props.spendingByCategory]);
 
   return (

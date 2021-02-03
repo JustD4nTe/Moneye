@@ -14,7 +14,7 @@ class IncomeRepository {
     return accountName
       ? await Income.findAll({
           attributes: [
-            [Sequelize.fn("sum", Sequelize.col("value")), "sum"],
+            [Sequelize.fn("sum", Sequelize.col("value")), "Income Value"],
             "date",
           ],
           where: {
@@ -30,7 +30,7 @@ class IncomeRepository {
         })
       : await Income.findAll({
           attributes: [
-            [Sequelize.fn("sum", Sequelize.col("value")), "sum"],
+            [Sequelize.fn("sum", Sequelize.col("value")), "Income Value"],
             "date",
           ],
           group: "date",
