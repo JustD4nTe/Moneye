@@ -73,6 +73,29 @@ class SpendingRepository {
       order: [["date", "DESC"]],
     });
   }
+
+  async Add(spending) {
+    let res = null;
+
+    await Spending.create({
+      name: spending.name,
+      date: spending.date,
+      value: spending.value,
+      category: spending.category,
+      AccountId: spending.accountId,
+    }).then((x) => (res = x));
+
+    await Account.update(
+      { balance: Sequelize.literal(`balance - ${spending.value}`) },
+      {
+        where: {
+          id: spending.accountId,
+        },
+      }
+    );
+
+    return res;
+  }
 }
 
 module.exports = new SpendingRepository();

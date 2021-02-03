@@ -72,6 +72,28 @@ class IncomeRepository {
       order: [["date", "DESC"]],
     });
   }
+
+  async Add(income) {
+    let res = null;
+
+    await Income.create({
+      name: income.name,
+      date: income.date,
+      value: income.value,
+      AccountId: income.accountId,
+    }).then((x) => (res = x));
+
+    await Account.update(
+      { balance: Sequelize.literal(`balance + ${income.value}`) },
+      {
+        where: {
+          id: income.accountId,
+        },
+      }
+    );
+
+    return res;
+  }
 }
 
 module.exports = new IncomeRepository();
