@@ -39,14 +39,14 @@ body {
 }
 
 .App {
-width: 100%;
+  width: 100%;
 }
 
 h1 {
   margin: 64px 0 40px 40px;
 }
 
-h2{
+h2 {
   margin-bottom: 16px;
 }
 .widgets-container {

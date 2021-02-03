@@ -12,6 +12,10 @@ export default function Overview() {
     },
   })();
 
+  const amountTitle = {
+    title: "All accounts",
+  };
+
   const number1 = {
     days: "7",
   };
@@ -23,7 +27,7 @@ export default function Overview() {
     <div className={style.main}>
       <h1>Overview</h1>
       <div className={`${style.widgets} widgets-container`}>
-        <AccountAmount />
+        <AccountAmount title={amountTitle.title} />
         <AccountsBalance />
         <SpendingsIncomeLastDays days={number1.days} />
         <SpendingsIncomeLastDays days={number2.days} />
