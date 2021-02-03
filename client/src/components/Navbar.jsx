@@ -38,6 +38,7 @@ export default function Navigation() {
       marginTop: "40px",
       marginBottom: "8px",
       fontSize: "0.7em",
+      color: "var(--main-grey)",
     },
     icon: {
       paddingRight: "8px",
