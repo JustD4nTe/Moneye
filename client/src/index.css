@@ -2,12 +2,19 @@
   margin: 0;
   padding: 0;
   text-transform: none;
+  text-align: left;
   cursor: default;
 }
 
 :root {
   --main-color: #68acf1;
   --main-grey: #767676;
+  --main-light: #eef2f9;
+  --main-white: #ffffff;
+  --main-black: #000000;
+  --main-red: #e9776f;
+  --main-green: #4dcb99;
+  --boxshadow: #b5b5b529;
 }
 
 #root {
@@ -19,6 +26,7 @@ body {
   font-family: "Segoe UI", "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--main-light);
 }
 
 .navbar {
@@ -26,10 +34,20 @@ body {
   flex-direction: column;
   height: 100vh;
   width: 12em;
-  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14);
+  box-shadow: 0px 0px 20px var(--boxshadow);
+  background-color: var(--main-white);
 }
 
 h1 {
   margin-left: 40px;
   margin-top: 64px;
+}
+
+.widget {
+  box-sizing: border-box;
+  box-shadow: 0px 0px 20px var(--boxshadow);
+  border-radius: 20px;
+  margin: 40px;
+  padding: 24px;
+  background-color: var(--main-white);
 }
