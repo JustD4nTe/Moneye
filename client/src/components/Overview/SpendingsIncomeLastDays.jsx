@@ -3,23 +3,22 @@ import "../../App.css";
 import "../../index.css";
 import { makeStyles } from "@material-ui/core/styles";
 
-export default function SpendingsIncomeLastDays() {
+export default function SpendingsIncomeLastDays(props) {
   const style = makeStyles({
     amountInfo: {
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
-      marginTop: "16px",
+      marginBottom: "16px",
     },
     info: {
       color: "var(--main-grey)",
       paddingRight: "32px",
-      fontSize: "0.9em",
     },
     amount: {
       color: "var(--main-black)",
       fontWeight: "bold",
-      fontSize: "1.2em",
+      fontSize: "1.4em",
     },
     spendings: {
       color: "var(--main-red)",
@@ -31,7 +30,7 @@ export default function SpendingsIncomeLastDays() {
 
   return (
     <div className="widget">
-      <h2>Last 30 days</h2>
+      <h2>Last {props.days} days</h2>
 
       {/* Spendings */}
       <div className={style.amountInfo}>

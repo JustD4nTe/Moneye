@@ -11,17 +11,22 @@ export default function Overview() {
     },
   })();
 
+  const number1 = {
+    days: "7",
+  };
+
+  const number2 = {
+    days: "30",
+  };
   return (
     <div className={style.main}>
       <h1>Overview</h1>
       <div className={`${style.widgets} widgets-container`}>
-      <SpendingsIncomeLastDays />
-      <SpendingsIncomeLastDays />
-      <AccountsBalance/>
-      <AccountsBalance/>
-
+        <AccountAmount />
+        <AccountsBalance />
+        <SpendingsIncomeLastDays days={number1.days} />
+        <SpendingsIncomeLastDays days={number2.days} />
       </div>
-      
     </div>
   );
 }
