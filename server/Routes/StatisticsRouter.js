@@ -1,22 +1,17 @@
 const express = require("express");
-const { Sequelize } = require("sequelize");
 const spendingRepo = require("../Repository/SpendingRepository");
-const { Spending, Account } = require("../sequelize");
+const incomeRepo = require("../Repository/IncomeRepository");
 
 const router = express.Router();
 
 router.get("/", async (req, res) => {
+  const incomeByDays = await incomeRepo.GetIncomeByDays();
   const spendingByCategory = await spendingRepo.GetSpendingByCategory();
-  const historyOfSpending = await spendingRepo.GetHistory();
 
   res.json({
+    incomeByDays: incomeByDays,
     spendingByCategory: spendingByCategory,
-    history: historyOfSpending,
   });
-});
-
-router.post("/", async (req, res) => {
-  res.json(await spendingRepo.Add(req.body));
 });
 
 module.exports = router;
