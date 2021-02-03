@@ -6,6 +6,7 @@ const incomeRouter = require("./Routes/IncomeRouter");
 const spendingRouter = require("./Routes/SpendingRouter");
 const overviewRouter = require("./Routes/OverviewRouter");
 const statisticsRouter = require("./Routes/StatisticsRouter");
+const accountRouter = require("./Routes/AccountRouter");
 
 const PORT = 5000;
 
@@ -26,6 +27,7 @@ app.use("/api/income", incomeRouter);
 app.use("/api/spending", spendingRouter);
 app.use("/api/overview", overviewRouter);
 app.use("/api/statistics", statisticsRouter);
+app.use("/api/account", accountRouter);
 
 app.listen(PORT, () => {
   console.log(`API is running on port: ${PORT}`);

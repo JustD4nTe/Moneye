@@ -20,6 +20,25 @@ class SpendingRepository {
     });
   }
 
+  async GetSpendingByCategory(accountName) {
+    return await Spending.findAll({
+      attributes: [
+        [Sequelize.fn("sum", Sequelize.col("value")), "sum"],
+        "category",
+      ],
+      where: {
+        "$Account.name$": accountName,
+      },
+      include: [
+        {
+          model: Account,
+          attributes: [],
+        },
+      ],
+      group: "category",
+    });
+  }
+
   async GetHistory() {
     return await Spending.findAll({
       attributes: [
@@ -29,6 +48,22 @@ class SpendingRepository {
         "category",
         [Sequelize.col("Account.name"), "accountName"],
       ],
+      include: [
+        {
+          model: Account,
+          attributes: [],
+        },
+      ],
+      order: [["date", "DESC"]],
+    });
+  }
+
+  async GetHistory(accountName) {
+    return await Spending.findAll({
+      attributes: { exclude: ["id", "AccountId"] },
+      where: {
+        "$Account.name$": accountName,
+      },
       include: [
         {
           model: Account,

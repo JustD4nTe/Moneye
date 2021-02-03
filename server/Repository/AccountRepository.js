@@ -12,6 +12,14 @@ class AccountRepository {
 
     return balances;
   }
+
+  async GetBalance(accountName) {
+    return await Account.findOne({
+      where: {
+        name: accountName,
+      },
+    });
+  }
 }
 
 module.exports = new AccountRepository();

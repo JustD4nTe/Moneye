@@ -20,6 +20,25 @@ class IncomeRepository {
     });
   }
 
+  async GetIncomeByDays(accountName) {
+    return await Income.findAll({
+      attributes: [
+        [Sequelize.fn("sum", Sequelize.col("value")), "sum"],
+        "date",
+      ],
+      where: {
+        "$Account.name$": accountName,
+      },
+      include: [
+        {
+          model: Account,
+          attributes: [],
+        },
+      ],
+      group: "date",
+    });
+  }
+
   async GetHistory() {
     return await Income.findAll({
       attributes: [
@@ -28,6 +47,22 @@ class IncomeRepository {
         "value",
         [Sequelize.col("Account.name"), "accountName"],
       ],
+      include: [
+        {
+          model: Account,
+          attributes: [],
+        },
+      ],
+      order: [["date", "DESC"]],
+    });
+  }
+
+  async GetHistory(accountName) {
+    return await Income.findAll({
+      attributes: { exclude: ["id", "AccountId"] },
+      where: {
+        "$Account.name$": accountName,
+      },
       include: [
         {
           model: Account,
