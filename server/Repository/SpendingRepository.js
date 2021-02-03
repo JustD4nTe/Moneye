@@ -14,8 +14,8 @@ class SpendingRepository {
     return accountName
       ? await Spending.findAll({
           attributes: [
-            [Sequelize.fn("sum", Sequelize.col("value")), "sum"],
-            "category",
+            [Sequelize.fn("sum", Sequelize.col("value")), "value"],
+            ["category", "id"],
           ],
           where: {
             "$Account.name$": accountName,
@@ -30,8 +30,8 @@ class SpendingRepository {
         })
       : await Spending.findAll({
           attributes: [
-            [Sequelize.fn("sum", Sequelize.col("value")), "sum"],
-            "category",
+            [Sequelize.fn("sum", Sequelize.col("value")), "value"],
+            ["category", "id"],
           ],
           group: "category",
         });
