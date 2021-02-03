@@ -6,15 +6,16 @@ const incomeRepo = require("../Repository/IncomeRepository");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-    let history = await spendingRepo.GetHistory(req.body.accountName);
-    
-    history = history.concat(await incomeRepo.GetHistory(req.body.accountName));
-    // order by desc
-    history.sort((a, b) => new Date(b.date) - new Date(a.date));
-    
-    const balance = await accountRepo.GetBalance(req.body.accountName);
-    const incomeByDays = await incomeRepo.GetIncomeByDays(req.body.accountName);
-    const spendingByCategory = await spendingRepo.GetSpendingByCategory(req.body.accountName);
+  const accountName = req.query.accountName;
+  let history = await spendingRepo.GetHistory(accountName);
+
+  history = history.concat(await incomeRepo.GetHistory(accountName));
+  // order by desc
+  history.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  const balance = await accountRepo.GetBalance(accountName);
+  const incomeByDays = await incomeRepo.GetIncomeByDays(accountName);
+  const spendingByCategory = await spendingRepo.GetSpendingByCategory(accountName);
 
   res.json({
     balance: balance,
