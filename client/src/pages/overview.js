@@ -3,6 +3,7 @@ import "../App.css";
 import { makeStyles } from "@material-ui/core/styles";
 import SpendingsIncomeLastDays from "../components/Overview/SpendingsIncomeLastDays";
 import AccountsBalance from "../components/Overview/AccountsBalance";
+import AccountAmount from "../components/Overview/AccountAmount";
 
 export default function Overview() {
   const style = makeStyles({

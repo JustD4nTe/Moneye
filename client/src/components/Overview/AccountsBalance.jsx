@@ -11,7 +11,7 @@ export default function AccountsBalance() {
     accountInfo: {
       display: "flex",
       alignItems: "center",
-      marginTop: "16px",
+      marginBottom: "16px",
     },
     icon: {
       width: "48px",

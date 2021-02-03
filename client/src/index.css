@@ -46,10 +46,14 @@ h1 {
   margin: 64px 0 40px 40px;
 }
 
+h2{
+  margin-bottom: 16px;
+}
 .widgets-container {
   margin-left: 24px;
   margin-right: 24px;
 }
+
 .widget {
   width: 100%;
   box-sizing: border-box;
