@@ -38,16 +38,24 @@ body {
   background-color: var(--main-white);
 }
 
-h1 {
-  margin-left: 40px;
-  margin-top: 64px;
+.App {
+width: 100%;
 }
 
+h1 {
+  margin: 64px 0 40px 40px;
+}
+
+.widgets-container {
+  margin-left: 24px;
+  margin-right: 24px;
+}
 .widget {
+  width: 100%;
   box-sizing: border-box;
   box-shadow: 0px 0px 20px var(--boxshadow);
   border-radius: 20px;
-  margin: 40px;
+  margin: 0 24px 24px 24px;
   padding: 24px;
   background-color: var(--main-white);
 }

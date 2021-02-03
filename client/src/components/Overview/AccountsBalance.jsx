@@ -1,10 +1,10 @@
 import React from "react";
-import "../App.css";
-import "../index.css";
+import "../../App.css";
+import "../../index.css";
 import { makeStyles } from "@material-ui/core/styles";
-import CardIcon from "../images/icons/card.png";
-import CashIcon from "../images/icons/cash.png";
-import SavingsIcon from "../images/icons/savings.png";
+import CardIcon from "../../images/icons/card.png";
+import CashIcon from "../../images/icons/cash.png";
+import SavingsIcon from "../../images/icons/savings.png";
 
 export default function AccountsBalance() {
   const style = makeStyles({

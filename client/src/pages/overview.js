@@ -1,18 +1,26 @@
 import React from "react";
 import "../App.css";
 import { makeStyles } from "@material-ui/core/styles";
-import SpendingsIncomeLastDays from "../components/SpendingsIncomeLastDays";
-import AccountsBalance from "../components/AccountsBalance";
+import SpendingsIncomeLastDays from "../components/Overview/SpendingsIncomeLastDays";
+import AccountsBalance from "../components/Overview/AccountsBalance";
 
 export default function Overview() {
-  const style = makeStyles({})();
+  const style = makeStyles({
+    widgets: {
+      display: "flex",
+    },
+  })();
 
   return (
     <div className={style.main}>
       <h1>Overview</h1>
+      <div className={`${style.widgets} widgets-container`}>
       <SpendingsIncomeLastDays />
-      {/* <SpendingsIncomeLastDays /> */}
+      <SpendingsIncomeLastDays />
       <AccountsBalance/>
+      <AccountsBalance/>
+
+      </div>
       
     </div>
   );

@@ -1,6 +1,6 @@
 import React from "react";
-import "../App.css";
-import "../index.css";
+import "../../App.css";
+import "../../index.css";
 import { makeStyles } from "@material-ui/core/styles";
 
 export default function SpendingsIncomeLastDays() {
