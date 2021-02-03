@@ -42,6 +42,7 @@ export default function Navigation() {
     icon: {
       paddingRight: "8px",
       cursor: "pointer",
+      width: "24px",
     },
   })();
 
