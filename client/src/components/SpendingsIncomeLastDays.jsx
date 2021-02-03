@@ -32,23 +32,29 @@ export default function SpendingsIncomeLastDays() {
   return (
     <div className="widget">
       <h2>Last 30 days</h2>
+
+      {/* Spendings */}
       <div className={style.amountInfo}>
         <p className={style.info}>All spendings</p>
         <p className={`${style.amount} ${style.spendings}`}>
-          <span className={style.dollar}>$</span>
+          <span className={style.unit}>$</span>
           200.42
         </p>
       </div>
+
+      {/* Income */}
       <div className={style.amountInfo}>
         <p className={style.info}>All income</p>
         <p className={`${style.amount} ${style.income}`}>
-          <span className={style.dollar}>$</span>3400
+          <span className={style.unit}>$</span>3400
         </p>
       </div>
+
+      {/* All - balance */}
       <div className={style.amountInfo}>
         <p className={style.info}>Balance</p>
         <p className={style.amount}>
-          <span className={style.dollar}>$</span>12456.58
+          <span className={style.unit}>$</span>12456.58
         </p>
       </div>
     </div>
