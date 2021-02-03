@@ -7,8 +7,9 @@ export default function AccountAmount(props) {
   const style = makeStyles({
     amount: {
       fontWeight: "bold",
-      fontSize: "2.5em",
+      fontSize: "4em",
       color: "var(--main-color)",
+      marginTop: "56px",
     },
   })();
 
