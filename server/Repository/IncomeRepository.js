@@ -10,67 +10,63 @@ class IncomeRepository {
     });
   }
 
-  async GetIncomeByDays() {
-    return await Income.findAll({
-      attributes: [
-        [Sequelize.fn("sum", Sequelize.col("value")), "sum"],
-        "date",
-      ],
-      group: "date",
-    });
-  }
-
   async GetIncomeByDays(accountName) {
-    return await Income.findAll({
-      attributes: [
-        [Sequelize.fn("sum", Sequelize.col("value")), "sum"],
-        "date",
-      ],
-      where: {
-        "$Account.name$": accountName,
-      },
-      include: [
-        {
-          model: Account,
-          attributes: [],
-        },
-      ],
-      group: "date",
-    });
-  }
-
-  async GetHistory() {
-    return await Income.findAll({
-      attributes: [
-        "name",
-        "date",
-        "value",
-        [Sequelize.col("Account.name"), "accountName"],
-      ],
-      include: [
-        {
-          model: Account,
-          attributes: [],
-        },
-      ],
-      order: [["date", "DESC"]],
-    });
+    return accountName
+      ? await Income.findAll({
+          attributes: [
+            [Sequelize.fn("sum", Sequelize.col("value")), "sum"],
+            "date",
+          ],
+          where: {
+            "$Account.name$": accountName,
+          },
+          include: [
+            {
+              model: Account,
+              attributes: [],
+            },
+          ],
+          group: "date",
+        })
+      : await Income.findAll({
+          attributes: [
+            [Sequelize.fn("sum", Sequelize.col("value")), "sum"],
+            "date",
+          ],
+          group: "date",
+        });
   }
 
   async GetHistory(accountName) {
-    return await Income.findAll({
-      attributes: { exclude: ["id", "AccountId"] },
-      where: {
-        "$Account.name$": accountName,
-      },
-      include: [
-        {
-          model: Account,
-          attributes: [],
-        },
-      ],
-      order: [["date", "DESC"]],
-    });
+    return accountName
+      ? await Income.findAll({
+          attributes: { exclude: ["id", "AccountId"] },
+          where: {
+            "$Account.name$": accountName,
+          },
+          include: [
+            {
+              model: Account,
+              attributes: [],
+            },
+          ],
+          order: [["date", "DESC"]],
+        })
+      : await Income.findAll({
+          attributes: [
+            "name",
+            "date",
+            "value",
+            [Sequelize.col("Account.name"), "accountName"],
+          ],
+          include: [
+            {
+              model: Account,
+              attributes: [],
+            },
+          ],
+          order: [["date", "DESC"]],
+        });
   }
 
   async Add(income) {
