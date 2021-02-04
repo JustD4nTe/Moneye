@@ -6,7 +6,7 @@ import CardIcon from "../../images/icons/card.png";
 import CashIcon from "../../images/icons/cash.png";
 import SavingsIcon from "../../images/icons/savings.png";
 
-export default function AccountsBalance() {
+export default function AccountsBalance(props) {
   const style = makeStyles({
     accountInfo: {
       display: "flex",
@@ -27,42 +27,37 @@ export default function AccountsBalance() {
     },
   })();
 
+  const [balance, setBalance] = React.useState([{ name: "", balance: 0 }]);
+
+  React.useEffect(() => {
+    setBalance(props.balance);
+  }, [props.balance]);
+
+  const accountsView = balance.map((acc) => {
+    let icon;
+
+    if (acc.name === "Card") icon = CardIcon;
+    else if (acc.name === "Cash") icon = CashIcon;
+    else icon = SavingsIcon;
+
+    return (
+      <div key={acc.name} className={style.accountInfo}>
+        <img className={style.icon} src={icon} alt="" />
+        <div>
+          <p className={style.accountName}>acc.name</p>
+          <p className={style.accountAmount}>
+            <span className={style.unit}>$</span>
+            {acc.balance}
+          </p>
+        </div>
+      </div>
+    );
+  });
+
   return (
     <div className="widget">
       <h2>Accounts</h2>
-
-      {/* Card */}
-      <div className={style.accountInfo}>
-        <img className={style.icon} src={CardIcon} alt="" />
-        <div>
-          <p className={style.accountName}>Card</p>
-          <p className={style.accountAmount}>
-            <span className={style.unit}>$</span>3240.56
-          </p>
-        </div>
-      </div>
-
-      {/* Cash */}
-      <div className={style.accountInfo}>
-        <img className={style.icon} src={CashIcon} alt="" />
-        <div>
-          <p className={style.accountName}>Cash</p>
-          <p className={style.accountAmount}>
-            <span className={style.unit}>$</span>40.06
-          </p>
-        </div>
-      </div>
-
-      {/* Savings */}
-      <div className={style.accountInfo}>
-        <img className={style.icon} src={SavingsIcon} alt="" />
-        <div>
-          <p className={style.accountName}>Savings</p>
-          <p className={style.accountAmount}>
-            <span className={style.unit}>$</span>29003.54
-          </p>
-        </div>
-      </div>
+      {accountsView}
     </div>
   );
 }

@@ -3,7 +3,7 @@ import "../../App.css";
 import "../../index.css";
 import { makeStyles } from "@material-ui/core/styles";
 
-export default function SpendingsIncomeLastDays(props) {
+export default function SpendingIncomeLastDays(props) {
   const style = makeStyles({
     amountInfo: {
       display: "flex",
@@ -20,7 +20,7 @@ export default function SpendingsIncomeLastDays(props) {
       fontWeight: "bold",
       fontSize: "1.4em",
     },
-    spendings: {
+    spending: {
       color: "var(--main-red)",
     },
     income: {
@@ -28,16 +28,26 @@ export default function SpendingsIncomeLastDays(props) {
     },
   })();
 
+  const [values, setValues] = React.useState({
+    spending: 0,
+    income: 0,
+    balance: 0,
+  });
+
+  React.useEffect(() => {
+    setValues(props.values);
+  }, [props.values]);
+
   return (
     <div className="widget">
       <h2>Last {props.days} days</h2>
 
-      {/* Spendings */}
+      {/* Spending */}
       <div className={style.amountInfo}>
-        <p className={style.info}>All spendings</p>
-        <p className={`${style.amount} ${style.spendings}`}>
+        <p className={style.info}>All spending</p>
+        <p className={`${style.amount} ${style.spending}`}>
           <span className={style.unit}>$</span>
-          200.42
+          {values.spending}
         </p>
       </div>
 
@@ -45,15 +55,17 @@ export default function SpendingsIncomeLastDays(props) {
       <div className={style.amountInfo}>
         <p className={style.info}>All income</p>
         <p className={`${style.amount} ${style.income}`}>
-          <span className={style.unit}>$</span>3400
+          <span className={style.unit}>$</span>
+          {values.income}
         </p>
       </div>
 
-      {/* All - balance */}
+      {/* All - balance: income - spending */}
       <div className={style.amountInfo}>
         <p className={style.info}>Balance</p>
         <p className={style.amount}>
-          <span className={style.unit}>$</span>12456.58
+          <span className={style.unit}>$</span>
+          {values.balance}
         </p>
       </div>
     </div>

@@ -13,7 +13,9 @@ export default function Cash() {
 
   React.useEffect(() => {
     (async () => {
-      await httpClient.GetDataForOverviewPage().then(resp => setData(resp.data));
+      await httpClient
+        .GetDataForOverviewPage()
+        .then((resp) => setData(resp.data));
     })();
   }, []);
 

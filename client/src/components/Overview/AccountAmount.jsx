@@ -13,12 +13,18 @@ export default function AccountAmount(props) {
     },
   })();
 
+  const [amount, setAmount] = React.useState(0);
+
+  React.useEffect(() => {
+    setAmount(props.amount);
+  }, [props.amount]);
+
   return (
     <div className="widget">
       <h2>{props.title}</h2>
       <p className={style.amount}>
         <span className={style.unit}>$</span>
-        45671.92
+        {amount}
       </p>
     </div>
   );
