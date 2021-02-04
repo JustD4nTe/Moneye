@@ -7,6 +7,7 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   const balance = await accountRepo.GetAccountsBalance();
+  const accountAmount = await accountRepo.GetSumOfBalance();
 
   const d = new Date();
   // get date 7 days ago
@@ -19,6 +20,7 @@ router.get("/", async (req, res) => {
   const last7days = {
     spending: last7daysSpending,
     income: last7daysIncome,
+    balance: last7daysIncome - last7daysSpending,
   };
 
   // get date 30 days ago (variable d is already 7 days ago)
@@ -32,6 +34,7 @@ router.get("/", async (req, res) => {
   const last30days = {
     spending: last30daysSpending,
     income: last30daysIncome,
+    balance: last30daysIncome - last30daysSpending,
   };
 
   const spendingByCategory = await spendingRepo.GetSpendingByCategory();
@@ -40,6 +43,7 @@ router.get("/", async (req, res) => {
     last30days: last30days,
     last7days: last7days,
     balance: balance,
+    accountAmount: accountAmount,
     spendingByCategory: spendingByCategory,
   });
 });
