@@ -44,7 +44,7 @@ export default function AccountsBalance(props) {
       <div key={acc.name} className={style.accountInfo}>
         <img className={style.icon} src={icon} alt="" />
         <div>
-          <p className={style.accountName}>acc.name</p>
+          <p className={style.accountName}>{acc.name}</p>
           <p className={style.accountAmount}>
             <span className={style.unit}>$</span>
             {acc.balance}
