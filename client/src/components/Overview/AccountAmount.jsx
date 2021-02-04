@@ -22,10 +22,7 @@ export default function AccountAmount(props) {
   return (
     <div className="widget">
       <h2>{props.title}</h2>
-      <p className={style.amount}>
-        <span className={style.unit}>$</span>
-        {amount}
-      </p>
+      <p className={style.amount}>${amount}</p>
     </div>
   );
 }

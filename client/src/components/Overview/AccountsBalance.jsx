@@ -45,10 +45,7 @@ export default function AccountsBalance(props) {
         <img className={style.icon} src={icon} alt="" />
         <div>
           <p className={style.accountName}>{acc.name}</p>
-          <p className={style.accountAmount}>
-            <span className={style.unit}>$</span>
-            {acc.balance}
-          </p>
+          <p className={style.accountAmount}>${acc.balance}</p>
         </div>
       </div>
     );
