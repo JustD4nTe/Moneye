@@ -18,6 +18,7 @@ class AccountRepository {
       where: {
         name: accountName,
       },
+      attributes: ["name", ["balance", "value"]],
     });
   }
 }
