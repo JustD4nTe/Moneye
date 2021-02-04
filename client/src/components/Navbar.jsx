@@ -20,7 +20,6 @@ export default function Navigation() {
     navLinks: {
       display: "flex",
       flexDirection: "column",
-      cursor: "pointer",
     },
     link: {
       textDecoration: "none",
@@ -29,6 +28,7 @@ export default function Navigation() {
       marginBottom: "24px",
       display: "flex",
       alignItems: "center",
+      cursor: "pointer",
     },
     activeLink: {
       color: "var(--main-color)",
@@ -38,10 +38,12 @@ export default function Navigation() {
       marginTop: "40px",
       marginBottom: "8px",
       fontSize: "0.7em",
+      color: "var(--main-grey)",
     },
     icon: {
       paddingRight: "8px",
       cursor: "pointer",
+      width: "24px",
     },
   })();
 

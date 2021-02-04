@@ -17,9 +17,7 @@ export default function Cash() {
     (async () => {
       await httpClient
         .GetDataForAccountPage({ accountName: "Cash" })
-        .then((resp) => {
-          setData(resp.data);
-        });
+        .then((resp) => setData(resp.data));
     })();
   }, []);
 

@@ -8,6 +8,10 @@ class HttpClient {
     });
   }
 
+  GetDataForOverviewPage() {
+    return this.httpClient.get("/overview");
+  }
+
   GetDataForAccountPage(params) {
     return this.httpClient.get("/account", { params });
   }

@@ -6,11 +6,11 @@ class AccountRepository {
       attributes: { exclude: ["id"] },
     });
 
-    balances = balances.map((x) => x.dataValues);
+    return balances.map((x) => x.dataValues);
+  }
 
-    balances.unshift({ sum: await Account.sum("balance") });
-
-    return balances;
+  async GetSumOfBalance() {
+    return await Account.sum("balance");
   }
 
   async GetBalance(accountName) {
