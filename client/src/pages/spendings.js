@@ -1,13 +1,12 @@
-import React from "react";
 import "../App.css";
-import { makeStyles } from "@material-ui/core/styles";
+import { Grid } from "@material-ui/core";
 
-export default function Spendings() {
-  const style = makeStyles({})();
-
+export default function Spending() {
   return (
-    <div className={style.main}>
-      <h1>Spendings</h1>
-    </div>
+    <Grid container item sm spacing={2}>
+      <Grid item xs={12}>
+        <h1>Spending</h1>
+      </Grid>
+    </Grid>
   );
 }
