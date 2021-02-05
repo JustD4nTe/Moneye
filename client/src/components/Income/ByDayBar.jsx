@@ -16,7 +16,7 @@ export default function ByDayBar(props) {
       <Bar
         data={data}
         width={500}
-        height={500}
+        height={400}
         keys={["Income Value"]}
         indexBy="date"
         margin={{ top: 50, right: 130, bottom: 50, left: 60 }}

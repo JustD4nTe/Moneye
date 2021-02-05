@@ -10,22 +10,27 @@ import Cash from "./pages/cash";
 import Savings from "./pages/savings";
 import Spendings from "./pages/spendings";
 import { LINKS } from "./Constants";
+import { Grid } from "@material-ui/core";
 
 export default function App() {
   return (
     <Router>
-      <Navbar />
-      <div className="App">
-        <Switch>
-          <Route path={LINKS.OVERVIEW} exact component={Overview} />
-          <Route path={LINKS.SPENDINGS} exact component={Spendings} />
-          <Route path={LINKS.INCOME} exact component={Income} />
-          <Route path={LINKS.STATISTICS} exact component={Statistics} />
-          <Route path={LINKS.CARD} exact component={Card} />
-          <Route path={LINKS.CASH} exact component={Cash} />
-          <Route path={LINKS.SAVINGS} exact component={Savings} />
-        </Switch>
-      </div>
+      <Grid container item xs>
+        <Grid item xs={1.2}>
+          <Navbar />
+        </Grid>
+        <Grid item xs className="App">
+          <Switch>
+            <Route path={LINKS.OVERVIEW} exact component={Overview} />
+            <Route path={LINKS.SPENDINGS} exact component={Spendings} />
+            <Route path={LINKS.INCOME} exact component={Income} />
+            <Route path={LINKS.STATISTICS} exact component={Statistics} />
+            <Route path={LINKS.CARD} exact component={Card} />
+            <Route path={LINKS.CASH} exact component={Cash} />
+            <Route path={LINKS.SAVINGS} exact component={Savings} />
+          </Switch>
+        </Grid>
+      </Grid>
     </Router>
   );
 }

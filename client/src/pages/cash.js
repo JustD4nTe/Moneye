@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import { makeStyles } from "@material-ui/core/styles";
+import { Grid } from "@material-ui/core";
 import ByCategoryPie from "../components/Spending/ByCategoryPie";
 import ByDayBar from "../components/Income/ByDayBar";
 import AccountAmount from "../components/AccountAmount";
@@ -8,16 +8,12 @@ import SpendingIncomeLastDays from "../components/SpendingIncomeLastDays";
 import httpClient from "../services/httpClient";
 
 export default function Cash() {
-  const style = makeStyles({
-    widgets: {
-      display: "flex",
-    },
-  })();
-
   const [data, setData] = React.useState({
     balance: { name: "", value: 0 },
     incomeByDays: [],
     spendingByCategory: [],
+    last7days: {},
+    last30days: {},
   });
 
   React.useEffect(() => {
@@ -29,13 +25,35 @@ export default function Cash() {
   }, []);
 
   return (
-    <div className={style.main}>
-      <h1>Cash</h1>
-      <div className={style.widgets}>
-        <AccountAmount amount={data.balance.value} title={data.balance.name} />
-        <ByCategoryPie spendingByCategory={data.spendingByCategory} />
-        <ByDayBar incomeByDays={data.incomeByDays} />
-      </div>
-    </div>
+    <Grid container item sm spacing={2}>
+      <Grid item xs={12}>
+        <h1>Cash</h1>
+      </Grid>
+      <Grid container item md spacing={3}>
+        <Grid item lg={4}>
+          {/* Account balance */}
+          <AccountAmount
+            amount={data.balance.value}
+            title={data.balance.name}
+          />
+        </Grid>
+        <Grid item md={4}>
+          {/* Last 7 days */}
+          <SpendingIncomeLastDays values={data.last7days} days={7} />
+        </Grid>
+        <Grid item md={4}>
+          {/* Last 30 days */}
+          <SpendingIncomeLastDays values={data.last30days} days={30} />
+        </Grid>
+        <Grid item lg={6}>
+          {/* Spending by category */}
+          <ByCategoryPie spendingByCategory={data.spendingByCategory} />
+        </Grid>
+        <Grid item lg={6}>
+          {/* Income by day */}
+          <ByDayBar incomeByDays={data.incomeByDays} />
+        </Grid>
+      </Grid>
+    </Grid>
   );
 }
