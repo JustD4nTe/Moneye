@@ -8,7 +8,7 @@ import Statistics from "./pages/statistics";
 import Card from "./pages/card";
 import Cash from "./pages/cash";
 import Savings from "./pages/savings";
-import Spendings from "./pages/spendings";
+import Spending from "./pages/spending";
 import { LINKS } from "./Constants";
 import { Grid } from "@material-ui/core";
 
@@ -22,7 +22,7 @@ export default function App() {
         <Grid item xs className="App">
           <Switch>
             <Route path={LINKS.OVERVIEW} exact component={Overview} />
-            <Route path={LINKS.SPENDINGS} exact component={Spendings} />
+            <Route path={LINKS.SPENDING} exact component={Spending} />
             <Route path={LINKS.INCOME} exact component={Income} />
             <Route path={LINKS.STATISTICS} exact component={Statistics} />
             <Route path={LINKS.CARD} exact component={Card} />
