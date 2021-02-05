@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import ByCategoryPie from "../components/Spending/ByCategoryPie";
 import ByDayBar from "../components/Income/ByDayBar";
 import AccountAmount from "../components/AccountAmount";
+import SpendingIncomeLastDays from "../components/SpendingIncomeLastDays";
 import httpClient from "../services/httpClient";
 
 export default function Cash() {

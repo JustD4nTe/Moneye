@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 import { makeStyles } from "@material-ui/core/styles";
-import SpendingIncomeLastDays from "../components/Overview/SpendingIncomeLastDays";
+import SpendingIncomeLastDays from "../components/SpendingIncomeLastDays";
 import AccountsBalance from "../components/Overview/AccountsBalance";
 import AccountAmount from "../components/AccountAmount";
 import httpClient from "../services/httpClient";
