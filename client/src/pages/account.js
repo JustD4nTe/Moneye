@@ -17,12 +17,14 @@ export default function Cash() {
   });
 
   React.useEffect(() => {
+    let name = window.location.pathname.split("/")[1];
+
     (async () => {
       await httpClient
-        .GetDataForAccountPage({ accountName: "Cash" })
+        .GetDataForAccountPage({ accountName: name })
         .then((resp) => setData(resp.data));
     })();
-  }, []);
+  }, [window.location.pathname]);
 
   return (
     <Grid container item sm spacing={2}>
