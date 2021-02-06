@@ -65,7 +65,9 @@ export default function SpendingIncomeLastDays(props) {
         <p className={style.info}>Balance</p>
         <p className={style.amount}>
           <span className={style.unit}>$</span>
-          {values.balance}
+          {Number(values.balance).toLocaleString("en-US", {
+            minimumFractionDigits: 2,
+          })}
         </p>
       </div>
     </div>
