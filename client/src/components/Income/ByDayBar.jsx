@@ -31,17 +31,11 @@ export default function ByDayBar(props) {
           tickSize: 5,
           tickPadding: 5,
           tickRotation: 0,
-          legend: "Date",
-          legendPosition: "middle",
-          legendOffset: 32,
         }}
         axisLeft={{
           tickSize: 5,
           tickPadding: 5,
           tickRotation: 0,
-          legend: "Income value",
-          legendPosition: "middle",
-          legendOffset: -54,
           format: (value) =>
             `$${Number(value).toLocaleString("en-US", {
               minimumFractionDigits: 2,
