@@ -11,6 +11,10 @@ class HttpClient {
   GetDataForOverviewPage() {
     return this.httpClient.get("/overview");
   }
+
+  GetDataForSpendingPage() {
+    return this.httpClient.get("/spending");
+  }
 }
 
 export default new HttpClient();

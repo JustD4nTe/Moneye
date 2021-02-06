@@ -2,18 +2,9 @@ import React from "react";
 import "../../App.css";
 import "../../index.css";
 import { makeStyles } from "@material-ui/core/styles";
-import FoodIcon from "../../images/icons/food.png";
-import GiftIcon from "../../images/icons/gift.png";
-import HealthIcon from "../../images/icons/health.png";
-import HomeIcon from "../../images/icons/home.png";
-import LeisureIcon from "../../images/icons/leisure.png";
-import ShoppingIcon from "../../images/icons/shopping.png";
-import TransportIcon from "../../images/icons/transport.png";
-import CardIcon from "../../images/icons/card.png";
-import CashIcon from "../../images/icons/cash.png";
-import SavingsIcon from "../../images/icons/savings.png";
+import { ACCOUNTS, CATEGORIES } from "../../Constants";
 
-export default function LastSpending() {
+export default function LastSpending(props) {
   const style = makeStyles({
     spending: {
       display: "flex",
@@ -66,60 +57,39 @@ export default function LastSpending() {
     },
   })();
 
+  const [data, setData] = React.useState([]);
+
+  React.useEffect(() => setData(props.history), [props.history]);
+
   return (
     <div className="widget">
       <h2>Last spending</h2>
 
-      {/* Single spending */}
-      <div className={style.spending}>
-        <div className={style.category}>
-          <img className={style.categoryIcon} src={FoodIcon} alt="" />
-          <p className={style.categoryName}>Food</p>
+      {data.map((x, i) => (
+        <div className={style.spending} key={i}>
+          <div className={style.category}>
+            <img
+              className={style.categoryIcon}
+              src={CATEGORIES.find((y) => y.value === x.category).icon}
+              alt=""
+            />
+            <p className={style.categoryName}>{x.category}</p>
+          </div>
+          <div className={style.spendingInfo}>
+            <p className={style.date}>{x.date}</p>
+            <p className={style.spendingName}>{x.name}</p>
+          </div>
+          <p className={style.amount}>-${x.value}</p>
+          <div className={style.accountInfo}>
+            <img
+              className={style.accountIcon}
+              src={ACCOUNTS.find((y) => y.value === x.accountName).icon}
+              alt=""
+            />
+            <p className={style.accountName}>{x.accountName}</p>
+          </div>
         </div>
-        <div className={style.spendingInfo}>
-          <p className={style.date}>04/02/2021</p>
-          <p className={style.spendingName}>Groceries</p>
-        </div>
-        <p className={style.amount}>-$123824.78</p>
-        <div className={style.accountInfo}>
-          <img className={style.accountIcon} src={CardIcon} alt="" />
-          <p className={style.accountName}>Card</p>
-        </div>
-      </div>
-
-      {/* Single spending */}
-      <div className={style.spending}>
-        <div className={style.category}>
-          <img className={style.categoryIcon} src={TransportIcon} alt="" />
-          <p className={style.categoryName}>Transport</p>
-        </div>
-        <div className={style.spendingInfo}>
-          <p className={style.date}>04/02/2021</p>
-          <p className={style.spendingName}>Bus ticket</p>
-        </div>
-        <p className={style.amount}>-$56</p>
-        <div className={style.accountInfo}>
-          <img className={style.accountIcon} src={CashIcon} alt="" />
-          <p className={style.accountName}>Cash</p>
-        </div>
-      </div>
-
-      {/* Single spending */}
-      <div className={style.spending}>
-        <div className={style.category}>
-          <img className={style.categoryIcon} src={ShoppingIcon} alt="" />
-          <p className={style.categoryName}>Shopping</p>
-        </div>
-        <div className={style.spendingInfo}>
-          <p className={style.date}>04/02/2021</p>
-          <p className={style.spendingName}>Clothes</p>
-        </div>
-        <p className={style.amount}>-$233.43</p>
-        <div className={style.accountInfo}>
-          <img className={style.accountIcon} src={CardIcon} alt="" />
-          <p className={style.accountName}>Card</p>
-        </div>
-      </div>
+      ))}
     </div>
   );
 }
