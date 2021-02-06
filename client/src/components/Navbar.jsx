@@ -68,11 +68,11 @@ export default function Navigation() {
 
         <NavLink
           exact
-          to={LINKS.SPENDINGS}
+          to={LINKS.SPENDING}
           className={style.link}
           activeClassName={style.activeLink}
         >
-          Spendings
+          Spending
         </NavLink>
 
         <NavLink
