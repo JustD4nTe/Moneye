@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { Box } from "@material-ui/core/";
 import { LINKS } from "../Constants";
-import Logo from "../images/logo_moneye_title.png";
+import Logo from "../images/logo_moneye.png";
 import CardIcon from "../images/icons/card.png";
 import CashIcon from "../images/icons/cash.png";
 import SavingsIcon from "../images/icons/savings.png";
