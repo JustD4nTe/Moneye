@@ -14,6 +14,8 @@ import {
   Radio,
   FormControlLabel,
   Button,
+  FormHelperText,
+  InputAdornment,
 } from "@material-ui/core/";
 
 export default function AddIncome() {
@@ -53,13 +55,13 @@ export default function AddIncome() {
     },
   })();
 
-  const [category, setCategory] = React.useState("Select");
   const schema = yup.object().shape({
-    value: yup.string().required("Required field"),
+    amount: yup.string().required("Required field"),
     name: yup
       .string()
       .max(26, "Name should be 26 characters or less")
       .required("Required field"),
+    accountType: yup.string().required("Required field"),
   });
 
   const { register, handleSubmit, errors } = useForm({
@@ -67,10 +69,10 @@ export default function AddIncome() {
     resolver: yupResolver(schema),
   });
 
-  const [value, setValue] = React.useState("");
+  const [amount, setAmount] = React.useState("");
 
   const handleChange = (event) => {
-    setValue(event.target.value);
+    setAmount(event.target.value);
   };
 
   return (
@@ -79,22 +81,11 @@ export default function AddIncome() {
 
       {/* Add spending form*/}
       <div className={style.form}>
-        <form className={style.form} noValidate>
-          {/* Value Input */}
-          <TextField
-            className={style.textField}
-            inputRef={register}
-            required
-            name="value"
-            label="Value"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
-            error={!!errors.value}
-            helperText={errors?.value?.message}
-          />
-
+        <form
+          className={style.form}
+          noValidate
+          onSubmit={handleSubmit(() => {})}
+        >
           {/* Name Input */}
           <TextField
             className={style.textField}
@@ -110,12 +101,41 @@ export default function AddIncome() {
             helperText={errors?.name?.message}
           />
 
+          {/* Amount Input */}
+          <TextField
+            className={style.textField}
+            inputRef={register}
+            required
+            name="amount"
+            label="Amount"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            type="number"
+            variant="outlined"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">$</InputAdornment>
+              ),
+            }}
+            error={!!errors.amount}
+            helperText={errors?.amount?.message}
+          />
+
           {/* Type of account - Input */}
-          <FormControl component="fieldset" className={style.formControl} required>
+          <FormControl
+            component="fieldset"
+            className={style.formControl}
+            required
+          >
             <FormLabel component="legend" className={style.label}>
               Account
             </FormLabel>
-            <RadioGroup name="account-type" value={value} onChange={handleChange}>
+            <RadioGroup
+              name="accountType"
+              value={amount}
+              onChange={handleChange}
+            >
               {ACCOUNTS.map((account) => (
                 <FormControlLabel
                   value={account.value}
@@ -130,6 +150,9 @@ export default function AddIncome() {
                 />
               ))}
             </RadioGroup>
+            <FormHelperText error className={style.formHelperTextCheckbox}>
+              {errors.accountType ? errors.accountType.message : " "}
+            </FormHelperText>
           </FormControl>
 
           {/* Button Submit */}

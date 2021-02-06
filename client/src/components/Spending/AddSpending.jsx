@@ -15,6 +15,8 @@ import {
   Radio,
   FormControlLabel,
   Button,
+  FormHelperText,
+  InputAdornment,
 } from "@material-ui/core/";
 
 export default function AddSpending() {
@@ -54,17 +56,19 @@ export default function AddSpending() {
     },
   })();
 
-  const [values, setValues] = React.useState({
-    category: "",
-  });
-
   const [category, setCategory] = React.useState("Select");
+
   const schema = yup.object().shape({
-    value: yup.string().required("Required field"),
+    amount: yup.string().required("Required field"),
     name: yup
       .string()
       .max(26, "Name should be 26 characters or less")
       .required("Required field"),
+    category: yup.string().when("categorySelect", {
+      is: (_) => category === "Select",
+      then: yup.string().required("Required field"),
+    }),
+    accountType: yup.string().required("Required field"),
   });
 
   const { register, handleSubmit, errors } = useForm({
@@ -75,33 +79,23 @@ export default function AddSpending() {
   const handleChangeSelect = (event) => {
     setCategory(event.target.value);
   };
-  const [value, setValue] = React.useState("");
+  const [amount, setAmount] = React.useState("");
 
   const handleChange = (event) => {
-    setValue(event.target.value);
+    setAmount(event.target.value);
   };
+
   return (
     <div className="widget">
       <h2>Add spending</h2>
 
       {/* Add spending form*/}
       <div className={style.form}>
-        <form className={style.form} noValidate>
-          {/* Value Input */}
-          <TextField
-            className={style.textField}
-            inputRef={register}
-            required
-            name="value"
-            label="Value"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
-            error={!!errors.value}
-            helperText={errors?.value?.message}
-          />
-
+        <form
+          className={style.form}
+          noValidate
+          onSubmit={handleSubmit(() => {})}
+        >
           {/* Name Input */}
           <TextField
             className={style.textField}
@@ -117,13 +111,41 @@ export default function AddSpending() {
             helperText={errors?.name?.message}
           />
 
-          {/* Type of account - Input */}
+          {/* Amount Input */}
+          <TextField
+            className={style.textField}
+            inputRef={register}
+            required
+            name="amount"
+            label="Amount"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            type="number"
+            variant="outlined"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">$</InputAdornment>
+              ),
+            }}
+            error={!!errors.amount}
+            helperText={errors?.amount?.message}
+          />
 
-          <FormControl component="fieldset" className={style.formControl} required>
+          {/* Type of account - Input */}
+          <FormControl
+            component="fieldset"
+            className={style.formControl}
+            required
+          >
             <FormLabel component="legend" className={style.label}>
               Account
             </FormLabel>
-            <RadioGroup name="account-type" value={value} onChange={handleChange}>
+            <RadioGroup
+              name="accountType"
+              value={amount}
+              onChange={handleChange}
+            >
               {ACCOUNTS.map((account) => (
                 <FormControlLabel
                   value={account.value}
@@ -138,6 +160,9 @@ export default function AddSpending() {
                 />
               ))}
             </RadioGroup>
+            <FormHelperText error className={style.formHelperTextCheckbox}>
+              {errors.accountType ? errors.accountType.message : " "}
+            </FormHelperText>
           </FormControl>
 
           {/* Category Input - Select */}
@@ -154,8 +179,8 @@ export default function AddSpending() {
             placeholder="Select"
             variant="outlined"
             onChange={handleChangeSelect}
-            // error={!!errors.category}
-            // helperText={errors?.category?.message}
+            error={!!errors.category}
+            helperText={errors?.category?.message}
             value={category}
           >
             {CATEGORIES.map((category) => (
