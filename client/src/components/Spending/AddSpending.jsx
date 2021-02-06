@@ -128,7 +128,7 @@ export default function AddSpending() {
                 <FormControlLabel
                   value={account.value}
                   key={account.value}
-                  control={<Radio />}
+                  control={<Radio color="primary" />}
                   label={
                     <div className={style.radio}>
                       <img className={style.icon} src={account.icon} alt="" />
