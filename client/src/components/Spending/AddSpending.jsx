@@ -18,6 +18,7 @@ import {
   FormHelperText,
   InputAdornment,
 } from "@material-ui/core/";
+import httpClient from "../../services/httpClient";
 
 export default function AddSpending() {
   const style = makeStyles({
@@ -68,7 +69,6 @@ export default function AddSpending() {
       is: (_) => category === "Select",
       then: yup.string().required("Required field"),
     }),
-    accountType: yup.string().required("Required field"),
   });
 
   const { register, handleSubmit, errors } = useForm({
@@ -79,11 +79,23 @@ export default function AddSpending() {
   const handleChangeSelect = (event) => {
     setCategory(event.target.value);
   };
-  const [amount, setAmount] = React.useState("");
+  const [accountTypeName, setAccountTypeName] = React.useState("Card");
 
   const handleChange = (event) => {
-    setAmount(event.target.value);
+    setAccountTypeName(event.target.value);
   };
+
+  function onSubmit(data) {
+    var newSpending = {
+      name: data.name,
+      date: new Date().toISOString().split("T")[0],
+      value: data.amount,
+      category: category,
+      accountId: ACCOUNTS.find((x) => x.name === accountTypeName).value,
+    };
+
+    httpClient.AddSpending(newSpending);
+  }
 
   return (
     <div className="widget">
@@ -94,7 +106,7 @@ export default function AddSpending() {
         <form
           className={style.form}
           noValidate
-          onSubmit={handleSubmit(() => {})}
+          onSubmit={handleSubmit(onSubmit)}
         >
           {/* Name Input */}
           <TextField
@@ -143,18 +155,18 @@ export default function AddSpending() {
             </FormLabel>
             <RadioGroup
               name="accountType"
-              value={amount}
+              value={accountTypeName}
               onChange={handleChange}
             >
               {ACCOUNTS.map((account) => (
                 <FormControlLabel
-                  value={account.value}
-                  key={account.value}
+                  value={account.name}
+                  key={account.name}
                   control={<Radio color="primary" />}
                   label={
                     <div className={style.radio}>
                       <img className={style.icon} src={account.icon} alt="" />
-                      <p>{account.value}</p>
+                      <p>{account.name}</p>
                     </div>
                   }
                 />

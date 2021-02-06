@@ -83,7 +83,7 @@ export default function LastSpending(props) {
           <div className={style.accountInfo}>
             <img
               className={style.accountIcon}
-              src={ACCOUNTS.find((y) => y.value === x.accountName).icon}
+              src={ACCOUNTS.find((y) => y.name === x.accountName).icon}
               alt=""
             />
             <p className={style.accountName}>{x.accountName}</p>

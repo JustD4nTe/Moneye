@@ -15,6 +15,14 @@ class HttpClient {
   GetDataForSpendingPage() {
     return this.httpClient.get("/spending");
   }
+
+  AddSpending(params) {
+    return this.httpClient.post("/spending", params);
+  }
+  
+  AddIncome(params) {
+    return this.httpClient.post("/income", params);
+  }
 }
 
 export default new HttpClient();

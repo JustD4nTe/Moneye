@@ -1,7 +1,7 @@
 import React from "react";
 import "../../App.css";
 import "../../index.css";
-import { ACCOUNTS, CATEGORIES } from "../../Constants.js";
+import { ACCOUNTS } from "../../Constants.js";
 import { makeStyles } from "@material-ui/core/styles";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -17,6 +17,7 @@ import {
   FormHelperText,
   InputAdornment,
 } from "@material-ui/core/";
+import httpClient from "../../services/httpClient";
 
 export default function AddIncome() {
   const style = makeStyles({
@@ -61,7 +62,6 @@ export default function AddIncome() {
       .string()
       .max(26, "Name should be 26 characters or less")
       .required("Required field"),
-    accountType: yup.string().required("Required field"),
   });
 
   const { register, handleSubmit, errors } = useForm({
@@ -69,11 +69,22 @@ export default function AddIncome() {
     resolver: yupResolver(schema),
   });
 
-  const [amount, setAmount] = React.useState("");
+  const [accountTypeName, setAccountTypeName] = React.useState("Card");
 
   const handleChange = (event) => {
-    setAmount(event.target.value);
+    setAccountTypeName(event.target.value);
   };
+
+  function onSubmit(data) {
+    var newIncome = {
+      name: data.name,
+      date: new Date().toISOString().split("T")[0],
+      value: data.amount,
+      accountId: ACCOUNTS.find((x) => x.name === accountTypeName).value,
+    };
+
+    httpClient.AddIncome(newIncome);
+  }
 
   return (
     <div className="widget">
@@ -84,7 +95,7 @@ export default function AddIncome() {
         <form
           className={style.form}
           noValidate
-          onSubmit={handleSubmit(() => {})}
+          onSubmit={handleSubmit(onSubmit)}
         >
           {/* Name Input */}
           <TextField
@@ -133,18 +144,18 @@ export default function AddIncome() {
             </FormLabel>
             <RadioGroup
               name="accountType"
-              value={amount}
+              value={accountTypeName}
               onChange={handleChange}
             >
               {ACCOUNTS.map((account) => (
                 <FormControlLabel
-                  value={account.value}
-                  key={account.value}
+                  value={account.name}
+                  key={account.name}
                   control={<Radio color="primary" />}
                   label={
                     <div className={style.radio}>
                       <img className={style.icon} src={account.icon} alt="" />
-                      <p>{account.value}</p>
+                      <p>{account.name}</p>
                     </div>
                   }
                 />

@@ -59,15 +59,18 @@ export const CATEGORIES = [
 
 export const ACCOUNTS = [
   {
-    value: "Card",
+    name: "Card",
     icon: CardIcon,
+    value: 1,
   },
   {
-    value: "Cash",
+    name: "Cash",
     icon: CashIcon,
+    value: 2,
   },
   {
-    value: "Saving",
+    name: "Saving",
     icon: SavingIcon,
+    value: 3,
   },
 ];
