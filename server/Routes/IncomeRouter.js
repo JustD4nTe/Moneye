@@ -6,6 +6,7 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   const incomeByDays = await incomeRepository.GetIncomeByDays();
   const historyOfIncome = await incomeRepository.GetHistory();
+  historyOfIncome.reverse();
 
   res.json({
     incomeByDays: incomeByDays,

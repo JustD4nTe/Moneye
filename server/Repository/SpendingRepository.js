@@ -63,7 +63,6 @@ class SpendingRepository {
               attributes: [],
             },
           ],
-          order: [["date", "DESC"]],
         })
       : await Spending.findAll({
           attributes: [
@@ -79,7 +78,6 @@ class SpendingRepository {
               attributes: [],
             },
           ],
-          order: [["date", "DESC"]],
         });
   }
 
