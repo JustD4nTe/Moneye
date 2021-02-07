@@ -31,7 +31,7 @@ export default function ByDayBar(props) {
       {data.length > 0 ? (
         <Bar
           data={data}
-          width={500}
+          width={600}
           height={400}
           keys={["Income Value"]}
           indexBy="date"
