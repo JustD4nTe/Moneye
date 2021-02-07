@@ -16,10 +16,14 @@ class HttpClient {
     return this.httpClient.get("/spending");
   }
 
+  GetDataForIncomePage() {
+    return this.httpClient.get("/income");
+  }
+
   AddSpending(params) {
     return this.httpClient.post("/spending", params);
   }
-  
+
   AddIncome(params) {
     return this.httpClient.post("/income", params);
   }

@@ -2,18 +2,9 @@ import React from "react";
 import "../../App.css";
 import "../../index.css";
 import { makeStyles } from "@material-ui/core/styles";
-import FoodIcon from "../../images/icons/food.png";
-import GiftIcon from "../../images/icons/gift.png";
-import HealthIcon from "../../images/icons/health.png";
-import HomeIcon from "../../images/icons/home.png";
-import LeisureIcon from "../../images/icons/leisure.png";
-import ShoppingIcon from "../../images/icons/shopping.png";
-import TransportIcon from "../../images/icons/transport.png";
-import CardIcon from "../../images/icons/card.png";
-import CashIcon from "../../images/icons/cash.png";
-import SavingsIcon from "../../images/icons/savings.png";
+import { ACCOUNTS } from "../../Constants";
 
-export default function LastIncome() {
+export default function LastIncome(props) {
   const style = makeStyles({
     income: {
       display: "flex",
@@ -53,35 +44,31 @@ export default function LastIncome() {
     },
   })();
 
+  const [data, setData] = React.useState([]);
+
+  React.useEffect(() => setData(props.history), [props.history]);
+
   return (
     <div className="widget">
       <h2>Last income</h2>
 
-      {/* Single income */}
-      <div className={style.income}>
-        <div className={style.accountInfo}>
-          <img className={style.accountIcon} src={CardIcon} alt="" />
-          <p className={style.accountName}>Card</p>
+      {data.map((x, i) => (
+        <div className={style.income} key={i}>
+          <div className={style.accountInfo}>
+            <img
+              className={style.accountIcon}
+              src={ACCOUNTS.find((y) => y.name === x.accountName).icon}
+              alt=""
+            />
+            <p className={style.accountName}>{x.accountName}</p>
+          </div>
+          <div className={style.incomeInfo}>
+            <p className={style.date}>{x.date}</p>
+            <p className={style.incomeName}>{x.name}</p>
+          </div>
+          <p className={style.amount}>+${x.value}</p>
         </div>
-        <div className={style.incomeInfo}>
-          <p className={style.date}>04/02/2021</p>
-          <p className={style.incomeName}>Gift</p>
-        </div>
-        <p className={style.amount}>+$100</p>
-      </div>
-
-      {/* Single income */}
-      <div className={style.income}>
-        <div className={style.accountInfo}>
-          <img className={style.accountIcon} src={CardIcon} alt="" />
-          <p className={style.accountName}>Card</p>
-        </div>
-        <div className={style.incomeInfo}>
-          <p className={style.date}>04/02/2021</p>
-          <p className={style.incomeName}>Gift</p>
-        </div>
-        <p className={style.amount}>+$100</p>
-      </div>
+      ))}
     </div>
   );
 }
