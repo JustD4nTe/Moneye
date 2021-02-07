@@ -1,11 +1,12 @@
+import React from "react";
 import "../App.css";
 import { makeStyles } from "@material-ui/core/styles";
-import LastIncome from "../components/Income/LastIncome";
-import AddIncome from "../components/Income/AddIncome";
+import LastSpending from "../components/Spending/LastSpending";
+import AddSpending from "../components/Spending/AddSpending";
 import httpClient from "../services/httpClient";
 import { Grid } from "@material-ui/core";
 
-export default function Income() {
+export default function Spending() {
   const style = makeStyles({
     widgets: {
       display: "flex",
@@ -19,7 +20,7 @@ export default function Income() {
   React.useEffect(() => {
     (async () => {
       await httpClient
-        .GetDataForIncomePage()
+        .GetDataForSpendingPage()
         .then((resp) => setData(resp.data));
     })();
   }, []);
@@ -27,11 +28,11 @@ export default function Income() {
   return (
     <Grid container item sm spacing={2}>
       <Grid item xs={12}>
-        <h1>Income</h1>
+        <h1>Spending</h1>
         <div className={`${style.widgets} widgets-container`}>
-          <AddIncome />
-          <LastIncome history={data.history} />
-          <LastIncome history={data.history} />
+          <AddSpending />
+          <LastSpending history={data.history} />
+          <LastSpending history={data.history} />
         </div>
       </Grid>
     </Grid>

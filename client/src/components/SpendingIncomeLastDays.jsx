@@ -1,6 +1,6 @@
 import React from "react";
-import "../../App.css";
-import "../../index.css";
+import "../App.css";
+import "../index.css";
 import { makeStyles } from "@material-ui/core/styles";
 
 export default function SpendingIncomeLastDays(props) {
@@ -65,7 +65,9 @@ export default function SpendingIncomeLastDays(props) {
         <p className={style.info}>Balance</p>
         <p className={style.amount}>
           <span className={style.unit}>$</span>
-          {values.balance}
+          {Number(values.balance).toLocaleString("en-US", {
+            minimumFractionDigits: 2,
+          })}
         </p>
       </div>
     </div>

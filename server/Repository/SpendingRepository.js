@@ -2,12 +2,25 @@ const { Sequelize, Op } = require("sequelize");
 const { Spending, Account } = require("../sequelize");
 
 class SpendingRepository {
-  async GetLastSumOfSpending(date) {
-    return await Spending.sum("value", {
-      where: {
-        date: { [Op.gt]: date },
-      },
-    });
+  async GetLastSumOfSpending(date, accountName) {
+    return accountName
+      ? await Spending.sum("value", {
+          where: {
+            date: { [Op.gt]: date },
+            "$Account.name$": accountName,
+          },
+          include: [
+            {
+              model: Account,
+              attributes: [],
+            },
+          ],
+        })
+      : await Spending.sum("value", {
+          where: {
+            date: { [Op.gt]: date },
+          },
+        });
   }
 
   async GetSpendingByCategory(accountName) {
