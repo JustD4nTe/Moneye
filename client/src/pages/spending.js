@@ -1,20 +1,15 @@
 import React from "react";
 import "../App.css";
-import { makeStyles } from "@material-ui/core/styles";
 import LastSpending from "../components/Spending/LastSpending";
 import AddSpending from "../components/Spending/AddSpending";
+import ByCategoryPie from "../components/Spending/ByCategoryPie";
 import httpClient from "../services/httpClient";
 import { Grid } from "@material-ui/core";
 
 export default function Spending() {
-  const style = makeStyles({
-    widgets: {
-      display: "flex",
-    },
-  })();
-
   const [data, setData] = React.useState({
     history: [],
+    spendingByCategory: [],
   });
 
   React.useEffect(() => {
@@ -29,11 +24,18 @@ export default function Spending() {
     <Grid container item sm spacing={2}>
       <Grid item xs={12}>
         <h1>Spending</h1>
-        <div className={`${style.widgets} widgets-container`}>
+      </Grid>
+      <Grid container item md spacing={3}>
+        <Grid item xl>
+          <LastSpending history={data.history} />
+        </Grid>
+        <Grid item lg>
+          {/* Spending by category */}
+          <ByCategoryPie spendingByCategory={data.spendingByCategory} />
+        </Grid>
+        <Grid item md={3}>
           <AddSpending />
-          <LastSpending history={data.history} />
-          <LastSpending history={data.history} />
-        </div>
+        </Grid>
       </Grid>
     </Grid>
   );

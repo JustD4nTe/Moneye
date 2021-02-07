@@ -33,7 +33,7 @@ export default function ByCategoryPie(props) {
           width={500}
           height={400}
           data={data}
-          margin={{ left: 16, bottom: 80, top: 80, right: 160 }}
+          margin={{ left: 80, bottom: 80, top: 80, right: 160 }}
           valueFormat=" >-$"
           sortByValue={true}
           innerRadius={0.5}
