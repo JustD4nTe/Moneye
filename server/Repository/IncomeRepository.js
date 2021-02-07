@@ -2,19 +2,32 @@ const { Sequelize, Op } = require("sequelize");
 const { Income, Account } = require("../sequelize");
 
 class IncomeRepository {
-  async GetLastSumOfIncome(foo) {
-    return await Income.sum("value", {
-      where: {
-        date: { [Op.gt]: foo },
-      },
-    });
+  async GetLastSumOfIncome(date, accountName) {
+    return accountName
+      ? await Income.sum("value", {
+          where: {
+            date: { [Op.gt]: date },
+            "$Account.name$": accountName,
+          },
+          include: [
+            {
+              model: Account,
+              attributes: [],
+            },
+          ],
+        })
+      : await Income.sum("value", {
+          where: {
+            date: { [Op.gt]: date },
+          },
+        });
   }
 
   async GetIncomeByDays(accountName) {
     return accountName
       ? await Income.findAll({
           attributes: [
-            [Sequelize.fn("sum", Sequelize.col("value")), "sum"],
+            [Sequelize.fn("sum", Sequelize.col("value")), "Income Value"],
             "date",
           ],
           where: {
@@ -30,7 +43,7 @@ class IncomeRepository {
         })
       : await Income.findAll({
           attributes: [
-            [Sequelize.fn("sum", Sequelize.col("value")), "sum"],
+            [Sequelize.fn("sum", Sequelize.col("value")), "Income Value"],
             "date",
           ],
           group: "date",

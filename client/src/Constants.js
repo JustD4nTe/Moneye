@@ -14,7 +14,8 @@ export const URL_API = "http://localhost:5000/api";
 
 export const LINKS = {
   OVERVIEW: "/",
-  SPENDINGS: "/spendings",
+  ACCOUNT: "/",
+  SPENDING: "/spending",
   INCOME: "/income",
   STATISTICS: "/statistics",
   CARD: "/card",
