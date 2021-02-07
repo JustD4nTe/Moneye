@@ -92,11 +92,7 @@ export default function AddIncome() {
 
       {/* Add spending form*/}
       <div className={style.form}>
-        <form
-          className={style.form}
-          noValidate
-          onSubmit={handleSubmit(onSubmit)}
-        >
+        <form className={style.form} noValidate onSubmit={handleSubmit(onSubmit)}>
           {/* Name Input */}
           <TextField
             className={style.textField}
@@ -125,20 +121,14 @@ export default function AddIncome() {
             type="number"
             variant="outlined"
             InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">$</InputAdornment>
-              ),
+              startAdornment: <InputAdornment position="start">$</InputAdornment>,
             }}
             error={!!errors.amount}
             helperText={errors?.amount?.message}
           />
 
           {/* Type of account - Input */}
-          <FormControl
-            component="fieldset"
-            className={style.formControl}
-            required
-          >
+          <FormControl component="fieldset" className={style.formControl} required>
             <FormLabel component="legend" className={style.label}>
               Account
             </FormLabel>

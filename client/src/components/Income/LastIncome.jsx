@@ -3,6 +3,7 @@ import "../../App.css";
 import "../../index.css";
 import { makeStyles } from "@material-ui/core/styles";
 import { ACCOUNTS } from "../../Constants";
+import { List } from "@material-ui/core";
 
 export default function LastIncome(props) {
   const style = makeStyles({
@@ -51,24 +52,25 @@ export default function LastIncome(props) {
   return (
     <div className="widget">
       <h2>Last income</h2>
-
-      {data.map((x, i) => (
-        <div className={style.income} key={i}>
-          <div className={style.accountInfo}>
-            <img
-              className={style.accountIcon}
-              src={ACCOUNTS.find((y) => y.name === x.accountName).icon}
-              alt=""
-            />
-            <p className={style.accountName}>{x.accountName}</p>
+      <List style={{ maxHeight: "400px", overflow: "auto" }}>
+        {data.map((x, i) => (
+          <div className={style.income} key={i}>
+            <div className={style.accountInfo}>
+              <img
+                className={style.accountIcon}
+                src={ACCOUNTS.find((y) => y.name === x.accountName).icon}
+                alt=""
+              />
+              <p className={style.accountName}>{x.accountName}</p>
+            </div>
+            <div className={style.incomeInfo}>
+              <p className={style.date}>{x.date}</p>
+              <p className={style.incomeName}>{x.name}</p>
+            </div>
+            <p className={style.amount}>+${x.value}</p>
           </div>
-          <div className={style.incomeInfo}>
-            <p className={style.date}>{x.date}</p>
-            <p className={style.incomeName}>{x.name}</p>
-          </div>
-          <p className={style.amount}>+${x.value}</p>
-        </div>
-      ))}
+        ))}
+      </List>
     </div>
   );
 }
