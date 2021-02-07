@@ -42,21 +42,18 @@ export default function SpendingIncomeLastDays(props) {
     <div className="widget">
       <h2>Last {props.days} days</h2>
 
+      {/* Income */}
+      <div className={style.amountInfo}>
+        <p className={style.info}>All income</p>
+        <p className={`${style.amount} ${style.income}`}>${values.income}</p>
+      </div>
+
       {/* Spending */}
       <div className={style.amountInfo}>
         <p className={style.info}>All spending</p>
         <p className={`${style.amount} ${style.spending}`}>
-          <span className={style.unit}>$</span>
+          -$
           {values.spending}
-        </p>
-      </div>
-
-      {/* Income */}
-      <div className={style.amountInfo}>
-        <p className={style.info}>All income</p>
-        <p className={`${style.amount} ${style.income}`}>
-          <span className={style.unit}>$</span>
-          {values.income}
         </p>
       </div>
 
@@ -64,7 +61,7 @@ export default function SpendingIncomeLastDays(props) {
       <div className={style.amountInfo}>
         <p className={style.info}>Balance</p>
         <p className={style.amount}>
-          <span className={style.unit}>$</span>
+          $
           {Number(values.balance).toLocaleString("en-US", {
             minimumFractionDigits: 2,
           })}
