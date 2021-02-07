@@ -1,12 +1,11 @@
 {
   "name": "moneye",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
     "client": "cd client && npm run start",
     "server": "cd server && npm run dev",
-    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "postinstall": "concurrently \"cd client && npm i\" \"cd server && npm i\""
   },
   "repository": {
     "type": "git",
