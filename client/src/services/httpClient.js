@@ -20,6 +20,10 @@ class HttpClient {
     return this.httpClient.get("/income");
   }
 
+  GetDataForAccountPage(params) {
+    return this.httpClient.get("/account", { params });
+  }
+
   AddSpending(params) {
     return this.httpClient.post("/spending", params);
   }
