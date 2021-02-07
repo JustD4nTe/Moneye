@@ -84,15 +84,6 @@ export default function Navigation() {
           Income
         </NavLink>
 
-        <NavLink
-          exact
-          to={LINKS.STATISTICS}
-          className={style.link}
-          activeClassName={style.activeLink}
-        >
-          Statistics
-        </NavLink>
-
         {/* Accounts */}
         <span className={style.accounts}>Accounts</span>
 
