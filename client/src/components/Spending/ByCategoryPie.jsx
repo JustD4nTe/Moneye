@@ -16,9 +16,10 @@ export default function ByCategoryPie(props) {
       textAlign: "center",
       fontSize: "2em",
       color: "var(--main-grey)",
-      marginBottom: "24px"
+      marginBottom: "24px",
     },
   })();
+
   const [data, setData] = React.useState([]);
 
   useEffect(() => {
@@ -39,7 +40,26 @@ export default function ByCategoryPie(props) {
           innerRadius={0.5}
           padAngle={0.7}
           cornerRadius={3}
-          colors={{ scheme: "nivo" }}
+          colors={(datum) => {
+            switch (datum.id) {
+              case "Food":
+                return "#F2AE7A";
+              case "Shopping":
+                return "#AC6FE9";
+              case "Transport":
+                return "#E9776F";
+              case "Gift":
+                return "#6F87E9";
+              case "Other":
+                return "#6E6E6E";
+              case "Health":
+                return "#4DCB99";
+              case "Home":
+                return "#68ACF1";
+              case "Leisure":
+                return "#F168CC";
+            }
+          }}
           borderWidth={1}
           borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
           radialLabelsSkipAngle={10}
