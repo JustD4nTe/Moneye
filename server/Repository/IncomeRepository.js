@@ -50,7 +50,6 @@ class IncomeRepository {
               attributes: [],
             },
           ],
-          order: [["date", "DESC"]],
         })
       : await Income.findAll({
           attributes: [
@@ -65,7 +64,6 @@ class IncomeRepository {
               attributes: [],
             },
           ],
-          order: [["date", "DESC"]],
         });
   }
 

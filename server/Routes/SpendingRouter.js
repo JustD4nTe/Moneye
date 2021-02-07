@@ -1,13 +1,12 @@
 const express = require("express");
-const { Sequelize } = require("sequelize");
 const spendingRepo = require("../Repository/SpendingRepository");
-const { Spending, Account } = require("../sequelize");
 
 const router = express.Router();
 
 router.get("/", async (req, res) => {
   const spendingByCategory = await spendingRepo.GetSpendingByCategory();
   const historyOfSpending = await spendingRepo.GetHistory();
+  historyOfSpending.reverse();
 
   res.json({
     spendingByCategory: spendingByCategory,
