@@ -69,7 +69,7 @@ export const ACCOUNTS = [
     value: 2,
   },
   {
-    name: "Saving",
+    name: "Savings",
     icon: SavingIcon,
     value: 3,
   },
