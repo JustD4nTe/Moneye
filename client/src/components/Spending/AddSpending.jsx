@@ -95,6 +95,7 @@ export default function AddSpending() {
     };
 
     httpClient.AddSpending(newSpending);
+    window.location.reload();
   }
 
   return (

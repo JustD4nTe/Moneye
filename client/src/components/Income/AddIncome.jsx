@@ -84,6 +84,7 @@ export default function AddIncome() {
     };
 
     httpClient.AddIncome(newIncome);
+    window.location.reload();
   }
 
   return (
